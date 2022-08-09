@@ -1,0 +1,128 @@
+PODS:
+  - "app_settings (3.0.0+1)":
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_acoustic_mobile_push (0.0.1):
+    - Flutter
+  - flutter_acoustic_mobile_push_beacon (0.0.1):
+    - Flutter
+    - flutter_acoustic_mobile_push
+  - flutter_acoustic_mobile_push_geofence (0.0.1):
+    - Flutter
+    - flutter_acoustic_mobile_push
+  - flutter_acoustic_mobile_push_inapp (0.0.1):
+    - Flutter
+    - flutter_acoustic_mobile_push
+  - flutter_acoustic_mobile_push_inbox (0.0.1):
+    - Flutter
+    - flutter_acoustic_mobile_push
+  - flutter_acoustic_mobile_push_location (0.0.1):
+    - Flutter
+    - flutter_acoustic_mobile_push
+  - flutter_ios_notification_service (0.0.1):
+    - Flutter
+  - geolocator_apple (1.2.0):
+    - Flutter
+  - google_maps_flutter (0.0.1):
+    - Flutter
+    - GoogleMaps
+  - GoogleMaps (6.0.1):
+    - GoogleMaps/Maps (= 6.0.1)
+  - GoogleMaps/Base (6.0.1)
+  - GoogleMaps/Maps (6.0.1):
+    - GoogleMaps/Base
+  - hexcolor (0.0.1):
+    - Flutter
+  - permission_handler_apple (9.0.4):
+    - Flutter
+  - url_launcher_ios (0.0.1):
+    - Flutter
+  - video_player_avfoundation (0.0.1):
+    - Flutter
+  - wakelock (0.0.1):
+    - Flutter
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - app_settings (from `.symlinks/plugins/app_settings/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_acoustic_mobile_push (from `.symlinks/plugins/flutter_acoustic_mobile_push/ios`)
+  - flutter_acoustic_mobile_push_beacon (from `.symlinks/plugins/flutter_acoustic_mobile_push_beacon/ios`)
+  - flutter_acoustic_mobile_push_geofence (from `.symlinks/plugins/flutter_acoustic_mobile_push_geofence/ios`)
+  - flutter_acoustic_mobile_push_inapp (from `.symlinks/plugins/flutter_acoustic_mobile_push_inapp/ios`)
+  - flutter_acoustic_mobile_push_inbox (from `.symlinks/plugins/flutter_acoustic_mobile_push_inbox/ios`)
+  - flutter_acoustic_mobile_push_location (from `.symlinks/plugins/flutter_acoustic_mobile_push_location/ios`)
+  - flutter_ios_notification_service (from `.symlinks/plugins/flutter_ios_notification_service/ios`)
+  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
+  - google_maps_flutter (from `.symlinks/plugins/google_maps_flutter/ios`)
+  - hexcolor (from `.symlinks/plugins/hexcolor/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
+  - wakelock (from `.symlinks/plugins/wakelock/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+
+SPEC REPOS:
+  trunk:
+    - GoogleMaps
+
+EXTERNAL SOURCES:
+  app_settings:
+    :path: ".symlinks/plugins/app_settings/ios"
+  Flutter:
+    :path: Flutter
+  flutter_acoustic_mobile_push:
+    :path: ".symlinks/plugins/flutter_acoustic_mobile_push/ios"
+  flutter_acoustic_mobile_push_beacon:
+    :path: ".symlinks/plugins/flutter_acoustic_mobile_push_beacon/ios"
+  flutter_acoustic_mobile_push_geofence:
+    :path: ".symlinks/plugins/flutter_acoustic_mobile_push_geofence/ios"
+  flutter_acoustic_mobile_push_inapp:
+    :path: ".symlinks/plugins/flutter_acoustic_mobile_push_inapp/ios"
+  flutter_acoustic_mobile_push_inbox:
+    :path: ".symlinks/plugins/flutter_acoustic_mobile_push_inbox/ios"
+  flutter_acoustic_mobile_push_location:
+    :path: ".symlinks/plugins/flutter_acoustic_mobile_push_location/ios"
+  flutter_ios_notification_service:
+    :path: ".symlinks/plugins/flutter_ios_notification_service/ios"
+  geolocator_apple:
+    :path: ".symlinks/plugins/geolocator_apple/ios"
+  google_maps_flutter:
+    :path: ".symlinks/plugins/google_maps_flutter/ios"
+  hexcolor:
+    :path: ".symlinks/plugins/hexcolor/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
+  video_player_avfoundation:
+    :path: ".symlinks/plugins/video_player_avfoundation/ios"
+  wakelock:
+    :path: ".symlinks/plugins/wakelock/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+
+SPEC CHECKSUMS:
+  app_settings: d103828c9f5d515c4df9ee754dabd443f7cedcf3
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_acoustic_mobile_push: 14c065e8b137e1e3aa96db05e807e9b77720d006
+  flutter_acoustic_mobile_push_beacon: 0d827931f8020b97b2fabb11c730d6f6afa2186e
+  flutter_acoustic_mobile_push_geofence: 8b73effce4fd52d9cd8f48473fc3b061770c1adb
+  flutter_acoustic_mobile_push_inapp: 4d2fa81175f09cae1cd5d62d24605bc756cd2cba
+  flutter_acoustic_mobile_push_inbox: 82fe2dede223ef8e32405bfd756742821f315e84
+  flutter_acoustic_mobile_push_location: c023bc6310742d0e7578962dfc7c6e689287d79b
+  flutter_ios_notification_service: 443ff29c5fc85b0e18672332c895a698a6d5f678
+  geolocator_apple: b741765c55dc21950e3e106e8b3584e55cf81ce5
+  google_maps_flutter: c59fc576c0d0c7f4dc4bd63832c862d22d5a7c6d
+  GoogleMaps: c213fc2334b7374144cede914da779b99be0ab74
+  hexcolor: fdfb9c4258ad96e949c2dbcdf790a62194b8aa89
+  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
+  url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
+  video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
+  wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
+  webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
+
+PODFILE CHECKSUM: 10156bdfc7c26f7ec2632fa34acbb3d53896daf8
+
+COCOAPODS: 1.11.2

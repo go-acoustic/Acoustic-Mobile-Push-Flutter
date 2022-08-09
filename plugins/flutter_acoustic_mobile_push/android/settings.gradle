@@ -1,0 +1,2 @@
+include ':libs'
+rootProject.name = 'flutter_acoustic_mobile_push'

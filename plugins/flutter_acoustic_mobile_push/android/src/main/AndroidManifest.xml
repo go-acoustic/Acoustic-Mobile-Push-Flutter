@@ -1,0 +1,131 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="co.acoustic.flutter.sdk.flutter_acoustic_mobile_push"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!-- INTERNET is required for calling the MCE server -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- WAKE_LOC is required for running scheduled tasks -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- RECEIVE_BOOT_COMPLETED is required for performing SDK task on device startup -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- VIBRATE is required for notification configuration -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- CALL_PHONE is optional. It is only required is the dial action is used -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- ACCESS_FINE_LOCATION is optional. It is only required if location services needs to use GPS location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- ACCESS_COARSE_LOCATION is optional. It is only required if location services needs to use network location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- ACCESS_BACKGROUND_LOCATION is optional. It is only required if location services needs to use GPS location -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <!-- BLUETOOTH is optional. It is only required if iBeacons are supported -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- BLUETOOTH_ADMIN is optional. It is only required if iBeacons are supported -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
+    <!--        android:name="co.acoustic.mobile.push.sdk.api.MceApplication"-->
+
+    <application
+        android:name=".MainApplication"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- This keeps the window background of the activity showing
+                 until Flutter renders its first frame. It can be removed if
+                 there is no splash screen (such as the default splash screen
+                 defined in @style/LaunchTheme). -->
+            <meta-data
+                android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
+                android:value="true" />
+        </activity>
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="INSERT-API-KEY-HERE"/>
+
+        <activity android:name="co.acoustic.mobile.push.plugins.DisplayWebViewActivity"></activity>
+
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <!-- The provider is needed for the SDK database -->
+        <provider
+            android:name="co.acoustic.mobile.push.sdk.db.Provider"
+            android:authorities="${applicationId}.MCE_PROVIDER"
+            android:exported="false" />
+
+        <!-- GeofenceBroadcastReceiver is optional. It is used to receive geofence events. It is required only if locations are enabled and geofences are used -->
+        <receiver
+            android:name="co.acoustic.mobile.push.sdk.location.GeofenceBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <!-- LocationBroadcastReceiver is optional. It is used to receive location updates. It is required only if locations are enabled -->
+        <receiver
+            android:name="co.acoustic.mobile.push.sdk.location.LocationBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <!-- NotifActionReceiver is required for notification handling -->
+        <receiver android:name="co.acoustic.mobile.push.sdk.notification.NotifActionReceiver" />
+
+        <!-- AlarmReceiver is required for SDK scheduled tasks and device status updates -->
+        <receiver android:name="co.acoustic.mobile.push.sdk.wi.AlarmReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- FCM Messages & Registration -->
+        <service android:name="co.acoustic.mobile.push.sdk.messaging.fcm.FcmMessagingService" >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- LocationUpdateCaller is used for scheduling location updates -->
+        <receiver android:name="co.acoustic.mobile.push.sdk.location.LocationUpdateCaller" />
+
+        <!-- EventsAlarmListener is required for event handling -->
+        <service android:name="co.acoustic.mobile.push.sdk.events.EventsAlarmListener" />
+        <!-- PhoneHomeIntentService is required to allow the client to contact the server to update state -->
+        <service android:name="co.acoustic.mobile.push.sdk.registration.PhoneHomeIntentService" />
+        <!-- RegistrationIntentService is required for SDK registration -->
+        <service android:name="co.acoustic.mobile.push.sdk.registration.RegistrationIntentService" />
+        <!-- AttributesQueueConsumer is required for attributes handling -->
+        <service android:name="co.acoustic.mobile.push.sdk.attributes.AttributesQueueConsumer" />
+        <!-- LocationRetrieveService is optional. It is used for retrieving the device location. It is required only if locations are enabled -->
+        <service android:name="co.acoustic.mobile.push.sdk.location.LocationRetrieveService" />
+        <!-- LocationEventsIntentService is optional. It is used to handle location events backoff. It is required only if locations are enabled -->
+        <service android:name="co.acoustic.mobile.push.sdk.location.LocationEventsIntentService" />
+        <!-- LocationSyncAlarmListener is optional. It is used to scheduled location sync. It is required only if locations are enabled -->
+        <service android:name="co.acoustic.mobile.push.sdk.location.LocationSyncAlarmListener" />
+        <!-- MceBluetoothScanner is optional. It is used to verify bluetooth scan. It is required only if iBeacons is used -->
+        <service android:name="co.acoustic.mobile.push.sdk.beacons.MceBluetoothScanner" />
+        <!-- BeaconsVerifier is optional. It is used to verify Bluetooth scan. It is required only if iBeacons are used -->
+        <service android:name="co.acoustic.mobile.push.sdk.beacons.BeaconsVerifier" />
+        <!-- MceJobService is used for launching a job while the app is in the foreground. This is only used in Android L and above -->
+        <service
+            android:name="co.acoustic.mobile.push.sdk.job.MceJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name="co.acoustic.mobile.push.sdk.plugin.snooze.SnoozeIntentService" />
+
+    </application>
+</manifest>

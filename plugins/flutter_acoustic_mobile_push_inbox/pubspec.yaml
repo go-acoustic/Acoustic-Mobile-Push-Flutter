@@ -1,0 +1,43 @@
+name: flutter_acoustic_mobile_push_inbox
+description: A new flutter plugin project.
+version: 0.0.1
+publish_to: none
+homepage:
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  event: ^2.0.5
+  intl: ^0.17.0
+  url_launcher: ^6.0.15
+  webview_flutter_plus: ^0.2.3+1
+
+  flutter:
+    sdk: flutter
+  flutter_acoustic_mobile_push:
+    path: ../flutter_acoustic_mobile_push
+  video_player: ^2.2.17
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+  # This section identifies this Flutter project as a plugin project.
+  # The 'pluginClass' and Android 'package' identifiers should not ordinarily
+  # be modified. They are used by the tooling to maintain consistency when
+  # adding or updating assets for this project.
+  plugin:
+    platforms:
+      android:
+        package: co.acoustic.flutter_acoustic_mobile_push_inbox
+        pluginClass: FlutterAcousticMobilePushInboxPlugin
+      ios:
+        pluginClass: FlutterAcousticMobilePushInboxPlugin

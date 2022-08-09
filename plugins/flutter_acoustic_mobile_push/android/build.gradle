@@ -1,0 +1,87 @@
+group 'co.acoustic.flutter.sdk.flutter_acoustic_mobile_push'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.4.32'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.10'
+
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+
+configurations {
+    acousticSDKDebugApi
+    acousticSDKReleaseApi
+    acousticSDKReleaseUnsignedApi
+}
+
+android {
+    compileSdkVersion 30
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        minSdkVersion 20
+        multiDexEnabled true
+    }
+}
+
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation files('templib/AcousticPushSDK.jar')
+    implementation 'com.google.android.gms:play-services-basement:17.6.0'
+    implementation files('templib/AcousticInAppSDK.jar')
+    implementation files('templib/AcousticInBoxSDK.jar')
+    compileOnly files('templib/flutter.jar')
+
+//    compileOnly 'androidx.core:core-ktx:1.6.0'
+//    compileOnly 'androidx.appcompat:appcompat:1.3.1'
+    compileOnly 'com.google.android.material:material:1.4.0'
+//    implementation project(':libs')
+    implementation 'androidx.multidex:multidex:2.0.1'  //with androidx libraries
+
+//    compileOnly files ("templib/acousticSDK.aar")
+//    acousticSDKDebugApi project(path: ':libs')
+//    acousticSDKReleaseApi project(path: ':libs')
+//    acousticSDKReleaseUnsignedApi project(path: ':libs')
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    implementation platform('com.google.firebase:firebase-bom:28.4.0')
+    implementation 'com.google.firebase:firebase-messaging-ktx:22.0.0'
+    implementation("com.google.firebase:firebase-iid")
+
+
+}
+
+
