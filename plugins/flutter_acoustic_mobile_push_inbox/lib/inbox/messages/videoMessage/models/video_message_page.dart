@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_acoustic_mobile_push_inbox/flutter_inbox_pay_load.dart';
 import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/videoMessage/video_message_page_state.dart';
 
 class VideoMessagePage extends StatefulWidget {
@@ -8,9 +9,7 @@ class VideoMessagePage extends StatefulWidget {
   final String videoMessagePageAvatar;
   final String videoMessagePageContent;
   final String videoMessagePageId;
-  final Function videoMessagePageInboxDeleteMessage;
-  final Function(bool) updateIsReadViewer;
-  final List<dynamic> videoActionList;
+  final List<MessageActions> videoActionList;
 
   const VideoMessagePage(
       {required this.videoMessagePageTitle,
@@ -19,8 +18,6 @@ class VideoMessagePage extends StatefulWidget {
       required this.videoMessagePageAvatar,
       required this.videoMessagePageContent,
       required this.videoMessagePageId,
-      required this.videoMessagePageInboxDeleteMessage,
-      required this.updateIsReadViewer,
       required this.videoActionList,
       Key? key})
       : super(key: key);

@@ -57,8 +57,6 @@ dependencies:
   another_flushbar: ">=1.10.25"
   # video player
   video_player: ">=2.2.6"
-  #geolocator
-  geolocator: ^7.7.1
   #location / geolocator
   # location: ^4.3.0
   # google maps for geofence
@@ -72,17 +70,14 @@ dependencies:
   #ibeacon
   #keep below package until next patch
   # flutter_beacon: ^0.5.1
-  #permissions checker
-  permission_handler: ^9.0.2
   #intl for dateTime conversion
   intl: ">=0.17.0"
   #html package for rendering inbox json html data
   flutter_html: ">=2.2.0"
   #webview flutter
-  webview_flutter_plus: "<=0.3.0+2"
+  webview_flutter_plus: ^0.3.0+2
   #hex color reader for custom sdk bg colors
   hexcolor: ">=2.0.5"
-  app_settings: ^4.1.8
 #  location: ^4.3.0
 
 dev_dependencies:

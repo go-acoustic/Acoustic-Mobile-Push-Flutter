@@ -12,13 +12,14 @@ dependencies:
   event: ^2.0.5
   intl: ^0.17.0
   url_launcher: ^6.0.15
-  webview_flutter_plus: ^0.2.3+1
+  webview_flutter_plus: ^0.3.0+2
 
   flutter:
     sdk: flutter
   flutter_acoustic_mobile_push:
     path: ../flutter_acoustic_mobile_push
   video_player: ^2.2.17
+  cached_network_image: ^3.2.1
 
 dev_dependencies:
   flutter_test:

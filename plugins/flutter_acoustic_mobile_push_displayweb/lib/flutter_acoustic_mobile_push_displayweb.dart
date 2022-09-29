@@ -14,10 +14,7 @@ class FlutterAcousticMobilePushDisplayweb {
 
 class WebURLValue {
   Future<void> setWebURL(String url) async {
-    // plugin not currently in use
-    // ignore: unused_local_variable
-    final String? response =
-        await const MethodChannel('flutter_acoustic_mobile_push_displayweb')
-            .invokeMethod('displayWebAction', url);
+    await const MethodChannel('flutter_acoustic_mobile_push_displayweb')
+        .invokeMethod('displayWebAction', url);
   }
 }

@@ -52,12 +52,12 @@ extension BottomBanner on _InAppState {
                       ScaffoldMessenger.of(context).clearSnackBars();
                       urlLauncher(url);
                     }),
-                // update below in next patch
-                // ignore: deprecated_member_use
-                FlatButton(
-                  height: 50,
-                  minWidth: leftoverWidth,
-                  color: Colors.blue,
+                TextButton(
+                  style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      minimumSize: Size(leftoverWidth, 50),
+                      padding: const EdgeInsets.all(0),
+                      backgroundColor: Colors.blue),
                   onPressed: () {
                     ScaffoldMessenger.of(context).clearSnackBars();
                   },

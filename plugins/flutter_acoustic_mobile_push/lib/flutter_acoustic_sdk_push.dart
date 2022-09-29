@@ -1,6 +1,5 @@
 import 'dart:core';
 import 'dart:convert';
-
 import 'package:flutter/services.dart';
 import 'package:event/event.dart';
 import 'package:flutter_acoustic_mobile_push/event/flutter_event_pay_load.dart';
@@ -132,7 +131,8 @@ class ValueEventArgs extends EventArgs {
 }
 
 class ArrayListEventArgs extends EventArgs {
-  List<dynamic> changedValue;
+  List changedValue;
+
   ArrayListEventArgs(this.changedValue);
 }
 

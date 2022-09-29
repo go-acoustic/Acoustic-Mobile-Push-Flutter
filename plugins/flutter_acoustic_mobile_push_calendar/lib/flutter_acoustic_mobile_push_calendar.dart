@@ -15,10 +15,7 @@ class FlutterAcousticMobilePushCalendar {
 
 class CalendarValue {
   Future<void> sendCalendarAction(CalendarPayload payload) async {
-    // plugin not currently in use
-    // ignore: unused_local_variable
-    final String? response =
-        await const MethodChannel('flutter_acoustic_mobile_push_calendar')
-            .invokeMethod('calendarAction', payload.createBundle());
+    await const MethodChannel('flutter_acoustic_mobile_push_calendar')
+        .invokeMethod('calendarAction', payload.createBundle());
   }
 }

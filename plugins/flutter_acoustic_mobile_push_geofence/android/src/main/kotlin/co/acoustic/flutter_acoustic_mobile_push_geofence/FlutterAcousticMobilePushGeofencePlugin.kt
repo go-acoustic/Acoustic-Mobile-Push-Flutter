@@ -91,6 +91,7 @@ class FlutterAcousticMobilePushGeofencePlugin : FlutterPlugin, MethodCallHandler
         for (location in locations) {
 
             val geofenceMap = JSONObject()
+            geofenceMap.put("id", location.id.toString())
             geofenceMap.put("latitude", location.latitude.toDouble())
             geofenceMap.put("longitude", location.longitude.toDouble())
             geofenceMap.put("radius", location.radius.toDouble())

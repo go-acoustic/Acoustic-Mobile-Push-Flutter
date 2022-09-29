@@ -226,16 +226,7 @@ class _SendUserAttributesState extends State<SendUserAttributes> {
         ),
         body: Container(
           height: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment(0.8, 0.4),
-              colors: <Color>[
-                Color.fromRGBO(22, 57, 77, 1),
-                Color.fromRGBO(14, 114, 101, 1),
-              ],
-            ),
-          ),
+          decoration: appBackgroundGradient,
           child: SingleChildScrollView(
             child: Form(
               key: _attributeFormKey,

@@ -55,6 +55,10 @@ class FlutterAcousticMobilePushBeaconPlugin: FlutterPlugin, MethodCallHandler {
             "getIBeaconLocations" -> {
                 FlutterAcousticMobilePushBeaconPlugin.beaconRegions(mContext, result)
             }
+            "sendLocationPermission" -> {
+                LocationManager.enableLocationSupport(mContext)
+                result.success("Enabled")
+            }
             else -> {
                 result.notImplemented()
             }
@@ -83,13 +87,14 @@ class FlutterAcousticMobilePushBeaconPlugin: FlutterPlugin, MethodCallHandler {
            var locations = LocationManager.getAllLocations(context)
             for (location in locations) {
                 try {
-                    val beaconLocation: IBeacon = location as IBeacon
-                    val beacon = JSONObject()
-                    beacon.put("major", beaconLocation.major)
-                    beacon.put("minor", beaconLocation.minor)
-                    beacon.put("id", beaconLocation.id)
-                    beaconList.put(beacon)
-
+                    if(location is IBeacon){
+                        val beaconLocation: IBeacon = location as IBeacon
+                        val beacon = JSONObject()
+                        beacon.put("major", beaconLocation.major)
+                        beacon.put("minor", beaconLocation.minor)
+                        beacon.put("id", beaconLocation.id)
+                        beaconList.put(beacon)
+                    }
                 } catch (ex: Exception) {
                     Log.e("Exception -->", ex.localizedMessage)
                 }

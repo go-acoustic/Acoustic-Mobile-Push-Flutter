@@ -37,4 +37,18 @@ class LocationModuleValue {
       }
     });
   }
+
+  Future<double> getLocationAccuracy() async {
+    final double response =
+        await const MethodChannel('flutter_acoustic_mobile_push_location')
+            .invokeMethod('getLocationAccuracy');
+    return response;
+  }
+
+  Future<int> getLocationSearchRadius() async {
+    final int response =
+        await const MethodChannel('flutter_acoustic_mobile_push_location')
+            .invokeMethod('getLocationSearchRadius');
+    return response;
+  }
 }

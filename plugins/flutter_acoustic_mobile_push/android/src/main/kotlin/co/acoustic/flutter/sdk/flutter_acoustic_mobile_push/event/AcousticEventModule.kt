@@ -176,10 +176,10 @@ class AcousticEventModule {
                        attributesPayload.add(NumberAttribute(key, value.toInt()));
                    } else if(type == "boolean"){
                        attributesPayload.add(BooleanAttribute(key, value.toBoolean()));
-                    } //else if(type == "date"){
-                //     val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-                //     attributesPayload.add(DateAttribute(key, dateFormat.parse(value)));
-                //    }
+                    } else if(type == "date"){
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+                    attributesPayload.add(DateAttribute(key, dateFormat.parse(value)));
+                   }
                }
            
                }

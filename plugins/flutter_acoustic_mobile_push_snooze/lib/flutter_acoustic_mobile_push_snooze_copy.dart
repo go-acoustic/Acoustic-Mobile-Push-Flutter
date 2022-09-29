@@ -15,11 +15,7 @@ class FlutterAcousticMobilePushSnooze {
 
 class SnoozeModuleValue {
   Future<void> setSnoozeValue(SnoozePayload value) async {
-    // plugin not active
-    // ignore: unused_local_variable
-    final String? response =
-        await const MethodChannel('flutter_acoustic_mobile_push_beacon')
-            .invokeMethod(
-                'getIBeaconLocations', jsonEncode(value.createBundle()));
+    await const MethodChannel('flutter_acoustic_mobile_push_beacon')
+        .invokeMethod('getIBeaconLocations', jsonEncode(value.createBundle()));
   }
 }

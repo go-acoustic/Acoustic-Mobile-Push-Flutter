@@ -110,7 +110,7 @@ class Content {
   String? contentText;
   MessageDetails? messageDetails;
   MessagePreview? messagePreview;
-  List<Actions>? actions;
+  List<MessageActions>? actions;
 
   String tag = "Payload";
   Content(
@@ -148,13 +148,13 @@ class Content {
     if (json['messageDetails'] != null) {
       if (json['actions'] != null) {
         try {
-          actions = <Actions>[];
+          actions = <MessageActions>[];
 
           for (final name in json['actions'].keys) {
             final actionsObject = json['actions'][name];
             actionsObject["id"] = name;
 
-            actions!.add(Actions.fromJson(actionsObject));
+            actions!.add(MessageActions.fromJson(actionsObject));
 
             var actionData = jsonEncode(json['messageDetails']['richContent']);
 
@@ -162,23 +162,15 @@ class Content {
 
             if (actionsObject['type'] == 'url') {
               needPatch = true;
-              dev.log("Patching html", name: tag);
-              actionDataFixed = actionData;
-            } else if (actionsObject['type'] == 'dial') {
-              actionDataFixed = actionData;
             }
+
+            actionDataFixed = actionData;
 
             var updatedActionData = jsonDecode(actionDataFixed);
             json['messageDetails']['richContent'] = updatedActionData;
             json['messageDetails'] = {'richContent': updatedActionData};
 
             messageDetails = MessageDetails.fromJson(json['messageDetails']);
-          }
-
-          if (needPatch) {
-            dev.log("Patching html complete", name: tag);
-          } else {
-            dev.log("Regular Actions", name: tag);
           }
         } catch (err) {
           dev.log("Error from mapping: $err", name: tag);
@@ -195,9 +187,9 @@ class Content {
         : null;
 
     if (json['actions'] != null && !needPatch) {
-      actions = <Actions>[];
+      actions = <MessageActions>[];
       json['actions'].forEach((v) {
-        actions!.add(Actions.fromJson(v));
+        actions!.add(MessageActions.fromJson(v));
       });
     }
   }
@@ -281,16 +273,16 @@ class MessagePreview {
   }
 }
 
-class Actions {
+class MessageActions {
   String name = "";
   String type = "";
   String value = "";
   String? id = "";
 
-  Actions(
+  MessageActions(
       {required this.name, required this.type, required this.value, this.id});
 
-  Actions.fromJson(Map<String, dynamic> json) {
+  MessageActions.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     type = json['type'];
     value = json['value'];

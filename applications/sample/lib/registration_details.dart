@@ -1,3 +1,4 @@
+import 'package:ca_mce_flutter_sdk_sample/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_acoustic_mobile_push/flutter_acoustic_sdk_push.dart';
 import 'dart:developer' as dev;
@@ -20,9 +21,9 @@ class Credentials {
 }
 
 class _RegistrationDetailsState extends State<RegistrationDetails> {
-  var _userId = "";
-  var _channelId = "";
-  var _appKey = "";
+  String _userId = "";
+  String _channelId = "";
+  String _appKey = "";
   String tag = "registrationDetails";
 
   Future<void> getDataFromSDK() async {
@@ -59,8 +60,38 @@ class _RegistrationDetailsState extends State<RegistrationDetails> {
     getDataFromSDK();
   }
 
-  // update in next patch
-  // ignore: annotate_overrides
+  Widget card(String title, String body) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(
+          bottom: BorderSide(
+            width: 1,
+            color: Colors.grey.shade400,
+          ),
+        ),
+      ),
+      padding: const EdgeInsets.symmetric(
+        vertical: 20,
+        horizontal: 50,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+          Text(body),
+        ],
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -74,16 +105,7 @@ class _RegistrationDetailsState extends State<RegistrationDetails> {
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment(0.8, 0.4),
-              colors: <Color>[
-                Color.fromRGBO(22, 57, 77, 1),
-                Color.fromRGBO(14, 114, 101, 1),
-              ],
-            ),
-          ),
+          decoration: appBackgroundGradient,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -99,82 +121,9 @@ class _RegistrationDetailsState extends State<RegistrationDetails> {
                   padding: const EdgeInsets.only(top: 50, bottom: 10, left: 20),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                    bottom: BorderSide(
-                      width: 1,
-                      color: Colors.grey.shade400,
-                    ),
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                  horizontal: 50,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Text(
-                      'User Id',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(_userId),
-                  ],
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                    bottom: BorderSide(
-                      width: 1,
-                      color: Colors.grey.shade400,
-                    ),
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                  horizontal: 50,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Text(
-                      'Channel ID',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(_channelId),
-                  ],
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                  horizontal: 50,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Text(
-                      'App Key',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(_appKey),
-                  ],
-                ),
-              ),
+              card('User Id', _userId),
+              card('Channel ID', _channelId),
+              card('App Key', _appKey),
               SafeArea(
                 bottom: false,
                 child: Container(

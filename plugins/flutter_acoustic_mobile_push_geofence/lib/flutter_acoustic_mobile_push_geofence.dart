@@ -27,12 +27,9 @@ class GeofencesValue {
   }
 
   Future<void> geofencesNearCoordinate(GeofencePayload payload) async {
-    dev.log("@@@ Geofence --> ${payload.createBundle()}", name: tag);
-
     String? response =
         await const MethodChannel('flutter_acoustic_mobile_push_geofence')
             .invokeMethod('geofencesNearCoordinate', payload.createBundle());
-    dev.log("@@@ Geofence response--> $response", name: tag);
     if (response == null || response.isEmpty) {
       geofenceLocations.broadcast(ArrayListEventArgs(List.empty()));
     } else {
@@ -45,6 +42,6 @@ class GeofencesValue {
 }
 
 class ArrayListEventArgs extends EventArgs {
-  List<dynamic> changedValue;
+  List<GeofencePayload> changedValue;
   ArrayListEventArgs(this.changedValue);
 }

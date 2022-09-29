@@ -1,6 +1,3 @@
-// update in next patch
-// ignore_for_file: invalid_use_of_protected_member
-
 part of 'package:ca_mce_flutter_sdk_sample/in_app.dart';
 
 extension VideoBanner on _InAppState {
@@ -37,7 +34,7 @@ extension VideoBanner on _InAppState {
 
                   inApp.recordViewForInAppMessage(_templatesInAppData.id!);
 
-                  setState(() {});
+                  videoSetState();
                 });
         }
       } catch (err) {
@@ -49,30 +46,18 @@ extension VideoBanner on _InAppState {
 
   videoRend() {
     try {
-      _videoController =
-          VideoPlayerController.network(_templatesInAppData.content!.video)
-            ..addListener(() {
-              final bool isPlaying = _videoController!.value.isPlaying;
+      _videoController = VideoPlayerController.network(
+          _templatesInAppData.content!.video)
+        ..addListener(() {
+          final bool isPlaying = _videoController!.value.isPlaying;
 
-              if (isPlayingNow) {
-                setState(() {
-                  hasStartedNow = true;
-                  isPausedNow = false;
-                });
-              }
+          videoSetState(playingNow: isPlayingNow);
 
-              if (isPlaying != isPlayingNow) {
-                setState(() {
-                  isPlayingNow = isPlaying;
-                  if (hasStartedNow && !isPlayingNow) {
-                    isPausedNow = true;
-                  }
-                });
-              }
-            })
-            ..initialize().then((_) {
-              setState(() {});
-            });
+          videoSetState(playingNow: isPlayingNow, currentlyPlaying: isPlaying);
+        })
+        ..initialize().then((_) {
+          videoSetState();
+        });
     } catch (err) {
       dev.log('video load error: $err', name: tag);
     }
@@ -154,7 +139,7 @@ extension VideoBanner on _InAppState {
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                       _videoController!.pause();
-                                      setState(() {});
+                                      videoSetState();
                                     },
                                   ),
                                 ],
@@ -180,14 +165,8 @@ extension VideoBanner on _InAppState {
                                         shadowColor: Colors.transparent,
                                       ),
                                       onPressed: () {
-                                        setState(() {
-                                          if (_videoController!
-                                              .value.isPlaying) {
-                                            _videoController!.pause();
-                                          } else {
-                                            _videoController!.play();
-                                          }
-                                        });
+                                        videoSetState(
+                                            videoController: _videoController!);
                                       },
                                       child: AnimatedBuilder(
                                         animation: _videoController!,

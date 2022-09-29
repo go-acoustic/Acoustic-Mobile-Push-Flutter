@@ -6,9 +6,7 @@ class SnoozePayload {
   int mailingId = 0;
 
   Map<String, dynamic> createBundle() {
-    // update in next patch
-    // ignore: prefer_collection_literals
-    Map<String, dynamic> data = Map();
+    Map<String, dynamic> data = {};
 
     if (value != null) {
       data['action'] = value!.toJson();

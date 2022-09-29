@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:ca_mce_flutter_sdk_sample/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_acoustic_mobile_push/event/flutter_event_pay_load.dart';
@@ -878,16 +879,7 @@ class _SendTestEventsState extends State<SendTestEvents> {
       ),
       body: Container(
         height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment(0.8, 0.4),
-            colors: <Color>[
-              Color.fromRGBO(22, 57, 77, 1),
-              Color.fromRGBO(14, 114, 101, 1),
-            ],
-          ),
-        ),
+        decoration: appBackgroundGradient,
         child: SingleChildScrollView(
           child: SafeArea(
             child: Container(

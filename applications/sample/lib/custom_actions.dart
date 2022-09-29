@@ -130,9 +130,7 @@ class _CustomActionsState extends State<CustomActions> {
     );
   }
 
-  // update in next patch
-  // ignore: non_constant_identifier_names
-  Widget textFieldSetup(Widget TextFormField) {
+  Widget textFieldSetup(Widget textFormField) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -147,7 +145,7 @@ class _CustomActionsState extends State<CustomActions> {
         ],
         color: Colors.white,
       ),
-      child: TextFormField,
+      child: textFormField,
     );
   }
 
@@ -167,16 +165,7 @@ class _CustomActionsState extends State<CustomActions> {
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment(0.8, 0.4),
-            colors: <Color>[
-              Color.fromRGBO(22, 57, 77, 1),
-              Color.fromRGBO(14, 114, 101, 1),
-            ],
-          ),
-        ),
+        decoration: appBackgroundGradient,
         child: SingleChildScrollView(
           child: Column(
             children: [

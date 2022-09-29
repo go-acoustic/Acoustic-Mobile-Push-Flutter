@@ -25,6 +25,17 @@ const Color messageBackgroundColor = Colors.white;
 const Color disableMessageBackgroundColor = Color.fromARGB(255, 197, 197, 197);
 const Color disableTextMessageBackgroundColor = Color.fromARGB(126, 35, 35, 35);
 
+const BoxDecoration appBackgroundGradient = BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment(0.8, 0.4),
+    colors: <Color>[
+      Color.fromRGBO(22, 57, 77, 1),
+      Color.fromRGBO(14, 114, 101, 1),
+    ],
+  ),
+);
+
 // Widget Data for Inbox.dart --------------------------------------
 
 const Color beaconListTitleColor = Colors.black;

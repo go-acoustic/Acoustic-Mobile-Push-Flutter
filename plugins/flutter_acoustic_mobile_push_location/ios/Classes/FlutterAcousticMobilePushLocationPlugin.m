@@ -38,6 +38,12 @@
     } else {
       result(@"disabled");
     }
+  } else if([@"getLocationAccuracy" isEqualToString:call.method]){
+     MCEConfig * config = MCESdk.sharedInstance.config;
+      result([NSNumber numberWithDouble:config.geofenceAccuracy]);
+  } else if([@"getLocationSearchRadius" isEqualToString:call.method]){
+     MCEConfig * config = MCESdk.sharedInstance.config;    
+      result([NSNumber numberWithInt:config.locationSyncRadius]);
   } else if ([@"enableLocation" isEqualToString:call.method]) {
     [MCESdk.sharedInstance manualLocationInitialization];
   } else if ([@"syncLocations" isEqualToString:call.method]) {

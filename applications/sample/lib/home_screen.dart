@@ -1,6 +1,7 @@
+import 'package:ca_mce_flutter_sdk_sample/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_acoustic_mobile_push_inbox/flutter_acoustic_mobile_push_inbox.dart';
+import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/inbox_messages.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,8 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         const MethodChannel('flutter_acoustic_mobile_push_inbox_receiver')
             .setMethodCallHandler((methodCall) async {
-          // ignore: await_only_futures
-          await methodCall.method;
+          methodCall.method;
           if (methodCall.method == "inboxMessageNotification") {
             Navigator.of(context).popUntil((route) => route.isFirst);
             String notificationResponseId = methodCall.arguments.toString();
@@ -78,16 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment(0.8, 0.4),
-                colors: <Color>[
-                  Color.fromRGBO(22, 57, 77, 1),
-                  Color.fromRGBO(14, 114, 101, 1),
-                ],
-              ),
-            ),
+            decoration: appBackgroundGradient,
             height: (MediaQuery.of(context).orientation == Orientation.portrait)
                 ? 250
                 : 100,

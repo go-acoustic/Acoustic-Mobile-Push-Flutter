@@ -7,11 +7,8 @@ class CalendarPayload {
 
   Map<String, dynamic> createBundle() {
     Map<String, dynamic> data = {};
-    // plugin not currently in use
-    // ignore: unnecessary_null_comparison
-    if (payload != null) {
-      data["action"] = payload.createBundle();
-    }
+
+    data["action"] = payload.createBundle();
 
     return data;
   }

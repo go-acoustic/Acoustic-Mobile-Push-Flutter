@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:ca_mce_flutter_sdk_sample/InApp/inapp_button_container.dart';
+import 'package:ca_mce_flutter_sdk_sample/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
@@ -7,8 +8,8 @@ import 'package:flutter_acoustic_mobile_push_inapp/flutter_acoustic_mobile_push_
 import 'package:flutter_acoustic_mobile_push_inapp/flutter_in_app_pay_load.dart'
     as inapp_pay_load;
 import 'package:flutter_acoustic_mobile_push_inapp/flutter_in_app_pay_load.dart';
+import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/layouts/message_layout.dart';
 import 'package:video_player/video_player.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'dart:developer' as dev;
 
 part 'package:ca_mce_flutter_sdk_sample/InApp/Execute/banner_data.dart';
@@ -165,9 +166,8 @@ class _InAppState extends State<InApp> {
     ]);
   }
 
-  urlLauncher(url) {
-    // ignore: deprecated_member_use
-    launch('$url', forceSafariVC: false, forceWebView: false);
+  urlLauncher(url) async {
+    await Message().launchAction(url);
   }
 
   clearBannerAndReload() {
@@ -213,23 +213,46 @@ class _InAppState extends State<InApp> {
     });
   }
 
+  videoSetState(
+      {bool? playingNow,
+      bool? currentlyPlaying,
+      VideoPlayerController? videoController}) {
+    if (playingNow != null) {
+      if (playingNow && currentlyPlaying == null) {
+        setState(() {
+          hasStartedNow = true;
+          isPausedNow = false;
+        });
+      } else if (currentlyPlaying != null) {
+        if (currentlyPlaying != playingNow) {
+          setState(() {
+            isPlayingNow = currentlyPlaying;
+            if (hasStartedNow && !isPlayingNow) {
+              isPausedNow = true;
+            }
+          });
+        }
+      }
+    }
+
+    if (videoController != null) {
+      setState(() {
+        if (videoController.value.isPlaying) {
+          _videoController!.pause();
+        } else {
+          _videoController!.play();
+        }
+      });
+    }
+    if (playingNow == null &&
+        currentlyPlaying == null &&
+        videoController == null) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    // update below lint bugs in next patch
-    // ignore: unused_element
-    Widget buildImageTemplate(title, message, image, url, templateId) =>
-        ImageTemplate(title, message, image, url, templateId);
-
-    // ignore: unused_element
-    Widget buildVideoTemplate(title, message, video, url, templateId) =>
-        videoTemplate(title, message, video, url, templateId);
-
-    // ignore: unused_element
-    inAppImageTemplate() => createImageBanner();
-
-    // ignore: unused_element
-    inAppNextTemplate() => createNextBanner();
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
@@ -267,16 +290,7 @@ class _InAppState extends State<InApp> {
         ],
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment(0.8, 0.4),
-            colors: <Color>[
-              Color.fromRGBO(22, 57, 77, 1),
-              Color.fromRGBO(14, 114, 101, 1),
-            ],
-          ),
-        ),
+        decoration: appBackgroundGradient,
         child: Column(
           children: [
             Expanded(

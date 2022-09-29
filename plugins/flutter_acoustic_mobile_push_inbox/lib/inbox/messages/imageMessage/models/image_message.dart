@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/imageMessage/image_message_state.dart';
+import 'package:flutter_acoustic_mobile_push_inbox/flutter_inbox_pay_load.dart';
+import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/imageMessage/image_message_preview.dart';
 
 class ImageMessage extends StatefulWidget {
   final String messageTitle;
@@ -9,11 +10,10 @@ class ImageMessage extends StatefulWidget {
   final String messageAvatar;
   final String messageContent;
   final String messageId;
-  final Function inboxDeleteMessage;
   final bool isRead;
   final bool isExpired;
   final String? notificationId;
-  final List<dynamic> action;
+  final List<MessageActions> action;
 
   const ImageMessage({
     required this.messageTitle,
@@ -23,7 +23,6 @@ class ImageMessage extends StatefulWidget {
     required this.messageAvatar,
     required this.messageContent,
     required this.messageId,
-    required this.inboxDeleteMessage,
     required this.isRead,
     required this.isExpired,
     this.notificationId,
@@ -32,5 +31,5 @@ class ImageMessage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ImageMessage> createState() => ImageMessageState();
+  State<ImageMessage> createState() => ImageMessagePreview();
 }

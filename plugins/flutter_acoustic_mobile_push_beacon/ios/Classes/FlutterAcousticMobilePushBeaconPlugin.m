@@ -47,7 +47,9 @@ static FlutterMethodChannel * channel;
       NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
       result(jsonString);
 
-  } else {
+  } else if ([@"sendLocationPermission" isEqualToString: call.method]) {
+       result(@"Enabled");
+   } else {
       
     result(FlutterMethodNotImplemented);
   }

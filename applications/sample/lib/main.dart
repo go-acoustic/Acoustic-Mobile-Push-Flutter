@@ -1,7 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_acoustic_mobile_push_inbox/flutter_acoustic_mobile_push_inbox.dart';
+import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/inbox_messages.dart';
 import 'home_screen.dart';
 import 'registration_details.dart';
 import 'in_app.dart';
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'home-screen': (context) => const HomeScreen(),
         '/registration-details': (context) => const RegistrationDetails(),
-        '/inbox': (context) => Inbox(),
+        '/inbox': (context) => const Inbox(),
         '/in-app': (context) => const InApp(),
         '/custom-actions': (context) => const CustomActions(),
         '/send-test-events': (context) => const SendTestEvents(),

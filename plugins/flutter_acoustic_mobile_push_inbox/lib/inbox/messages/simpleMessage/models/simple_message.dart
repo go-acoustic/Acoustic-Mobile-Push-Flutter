@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/simpleMessage/simple_message_state.dart';
+import 'package:flutter_acoustic_mobile_push_inbox/flutter_inbox_pay_load.dart';
+import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/simpleMessage/simple_message_preview.dart';
 
 class SimpleMessage extends StatefulWidget {
   final String messageTitle;
@@ -9,9 +10,8 @@ class SimpleMessage extends StatefulWidget {
   final String messageId;
   final bool isRead;
   final bool isExpired;
-  final Function inboxDeleteMessage;
   final String? notificationId;
-  final List<dynamic> action;
+  final List<MessageActions> action;
 
   const SimpleMessage({
     required this.messageTitle,
@@ -19,7 +19,6 @@ class SimpleMessage extends StatefulWidget {
     required this.messageDate,
     required this.messageContent,
     required this.messageId,
-    required this.inboxDeleteMessage,
     required this.isRead,
     required this.isExpired,
     this.notificationId,
@@ -28,5 +27,5 @@ class SimpleMessage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<SimpleMessage> createState() => SimpleMessageState();
+  State<SimpleMessage> createState() => SimpleMessagePreview();
 }

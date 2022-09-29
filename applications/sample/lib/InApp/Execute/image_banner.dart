@@ -17,7 +17,7 @@ extension ImageBanner on _InAppState {
             isScrollControlled: true,
             useRootNavigator: true,
             backgroundColor: const Color.fromRGBO(0, 0, 0, 0.2),
-            builder: (context) => ImageTemplate(
+            builder: (context) => imageTemplate(
               _templatesInAppData.content!.title,
               _templatesInAppData.content!.text,
               _templatesInAppData.content!.image,
@@ -42,9 +42,7 @@ extension ImageBanner on _InAppState {
     }
   }
 
-  // update in next patch
-  // ignore: non_constant_identifier_names
-  ImageTemplate(title, message, image, url, templateId) {
+  imageTemplate(title, message, image, url, templateId) {
     if (MediaQuery.of(context).orientation == Orientation.portrait) {
       return DraggableScrollableSheet(
         initialChildSize: 1,

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:event/event.dart';
 import 'package:flutter_acoustic_mobile_push_beacon/ibeacon/flutter_ibeacon_pay_load.dart';
-import 'package:flutter_acoustic_mobile_push/flutter_acoustic_sdk_push.dart';
+import 'dart:developer' as dev;
 
 class FlutterAcousticMobilePushBeacon {
   static const MethodChannel _channel =
@@ -21,6 +21,8 @@ class IbeaconModuleValue {
   final uuidValue = Event<ValueEventArgs>();
   final beaconValues = Event<BeaconEventArgs>();
 
+  String tag = "IBeacons";
+
   Future<void> getIBeaconLocations() async {
     getBeaconStatus();
     final String? response =
@@ -34,8 +36,16 @@ class IbeaconModuleValue {
       List<IBeaconPayload> beaconList = beaconListJson
           .map((beaconJson) => IBeaconPayload.fromJson(beaconJson))
           .toList();
+
       beaconLocations.broadcast(ArrayListEventArgs(beaconList));
     }
+  }
+
+  Future<void> sendLocationPermission() async {
+    final String? response =
+        await const MethodChannel('flutter_acoustic_mobile_push_beacon')
+            .invokeMethod('sendLocationPermission', null);
+    dev.log("@@@ sendLocationPermission --> $response", name: tag);
   }
 
   Future<void> getBeaconStatus() async {
@@ -64,7 +74,13 @@ class BeaconEventArgs extends EventArgs {
   BeaconEventArgs(this.beaconValue);
 }
 
-class ArrayBeaconEventArgs extends EventArgs {
+class ValueEventArgs extends EventArgs {
+  String changedValue;
+  ValueEventArgs(this.changedValue);
+}
+
+class ArrayListEventArgs extends EventArgs {
   List<IBeaconPayload> changedValue;
-  ArrayBeaconEventArgs(this.changedValue);
+
+  ArrayListEventArgs(this.changedValue);
 }
