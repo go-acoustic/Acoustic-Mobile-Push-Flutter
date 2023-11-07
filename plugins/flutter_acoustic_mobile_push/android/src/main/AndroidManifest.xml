@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
+    <!-- POST_NOTIFICATIONS is required to enable the notification permission switch for API 31+  -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <!-- INTERNET is required for calling the MCE server -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- WAKE_LOC is required for running scheduled tasks -->
@@ -74,9 +76,15 @@
 
         <!-- NotifActionReceiver is required for notification handling -->
         <receiver android:name="co.acoustic.mobile.push.sdk.notification.NotifActionReceiver" />
+        <activity
+            android:name="co.acoustic.mobile.push.sdk.notification.NotificationProcessingActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:exported="false" />
 
         <!-- AlarmReceiver is required for SDK scheduled tasks and device status updates -->
-        <receiver android:name="co.acoustic.mobile.push.sdk.wi.AlarmReceiver" >
+        <receiver android:name="co.acoustic.mobile.push.sdk.wi.AlarmReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -94,7 +102,7 @@
         </receiver>
 
         <!-- FCM Messages & Registration -->
-        <service android:name="co.acoustic.mobile.push.sdk.messaging.fcm.FcmMessagingService" >
+        <service android:name="co.acoustic.mobile.push.sdk.messaging.fcm.FcmMessagingService" android:exported="true" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

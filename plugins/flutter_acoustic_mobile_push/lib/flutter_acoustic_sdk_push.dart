@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:io' show Platform;
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:event/event.dart';
@@ -47,6 +48,22 @@ class FlutterAcousticSdkPush {
       Map<String, Object> eventPayLoad) async {
     final String? version = await _channel.invokeMethod('sendEvents');
     return version;
+  }
+
+  static Future<String?> sdkState() async {
+    if (Platform.isIOS) {
+      final String? state = await _channel.invokeMethod('sdkState');
+      return state;
+    }
+    throw PlatformException(code: 'METHOD_ONLY_SUPPORTED_ON_IOS');
+  }
+
+  static Future<bool> sdkStateIsRunning() async {
+    if (Platform.isIOS) {
+      final String? isRunning = await _channel.invokeMethod('sdkStateIsRunning');
+      return isRunning == 'true';
+    }
+    throw PlatformException(code: 'METHOD_ONLY_SUPPORTED_ON_IOS');
   }
 
   static void getRegisterValue() {}

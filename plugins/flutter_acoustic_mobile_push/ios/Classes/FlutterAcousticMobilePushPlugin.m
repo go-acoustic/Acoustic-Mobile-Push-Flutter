@@ -195,9 +195,39 @@ static NSMutableSet* registeredAction = NULL;
       
       [MCEEventService.sharedInstance addEvent: event immediate: immediate];
       
+  } else if ([@"sdkState" isEqualToString:call.method]) {
+      MCESdkState res = [MCESdk.shared sdkState];
+      NSString *stateString = NSStringFromMCESdkState(res);
+      NSLog(@"%@", stateString);
+
+  } else if ([@"sdkStateIsRunning" isEqualToString:call.method]) {
+      [[MCESdk shared] sdkStateIsRunning:^(NSError * _Nullable error) {
+              if (error != nil) {
+                  NSLog(@"%@", [error localizedDescription]);
+                  result(@"false");
+                  return;
+              }
+              result(@"true");
+          }];
+      
   } else {
     result(FlutterMethodNotImplemented);
   }
+}
+
+NSString* NSStringFromMCESdkState(MCESdkState state) {
+    switch(state) {
+        case NotInitialized:
+            return @"NotInitialized";
+        case Initializing:
+            return @"Initializing";
+        case Running:
+            return @"Running";
+        case Stopped:
+            return @"Stopped";
+        default:
+            return @"InvalidState";
+    }
 }
 
 - (void)registerAction {

@@ -54,7 +54,7 @@ extension BottomBanner on _InAppState {
                     }),
                 TextButton(
                   style: TextButton.styleFrom(
-                      primary: Colors.white,
+                      foregroundColor: Colors.white,
                       minimumSize: Size(leftoverWidth, 50),
                       padding: const EdgeInsets.all(0),
                       backgroundColor: Colors.blue),

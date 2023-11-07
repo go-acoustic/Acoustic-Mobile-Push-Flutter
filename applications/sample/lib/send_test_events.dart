@@ -315,7 +315,7 @@ class _SendTestEventsState extends State<SendTestEvents> {
           onPressed: () {},
           style: TextButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            primary: Colors.white,
+            foregroundColor: Colors.white,
             textStyle: const TextStyle(fontSize: 20, color: Colors.white),
             backgroundColor: Colors.cyan,
             shape: RoundedRectangleBorder(
@@ -714,7 +714,7 @@ class _SendTestEventsState extends State<SendTestEvents> {
                 onPressed: () {},
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 5),
-                  primary: Colors.white,
+                  foregroundColor: Colors.white,
                   textStyle: const TextStyle(fontSize: 20, color: Colors.white),
                   backgroundColor: Colors.cyan,
                   shape: RoundedRectangleBorder(

@@ -8,7 +8,7 @@ extension VideoBanner on _InAppState {
       try {
         if (_templatesInAppData.content?.action!.value != null) {
           _videoController =
-              VideoPlayerController.network(_templatesInAppData.content!.video)
+              VideoPlayerController.networkUrl(Uri.parse(_templatesInAppData.content!.video))
                 ..addListener(() {
                   if (_videoController!.value.duration ==
                       _videoController!.value.position) {
@@ -46,8 +46,8 @@ extension VideoBanner on _InAppState {
 
   videoRend() {
     try {
-      _videoController = VideoPlayerController.network(
-          _templatesInAppData.content!.video)
+      _videoController = VideoPlayerController.networkUrl(
+          Uri.parse(_templatesInAppData.content!.video))
         ..addListener(() {
           final bool isPlaying = _videoController!.value.isPlaying;
 
@@ -160,8 +160,8 @@ extension VideoBanner on _InAppState {
                                         _videoController!.value.aspectRatio,
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        primary: Colors.transparent,
-                                        onPrimary: Colors.white,
+                                        backgroundColor: Colors.transparent,
+                                        foregroundColor: Colors.white,
                                         shadowColor: Colors.transparent,
                                       ),
                                       onPressed: () {

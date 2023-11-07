@@ -60,7 +60,7 @@ dependencies:
   #location / geolocator
   # location: ^4.3.0
   # google maps for geofence
-  google_maps_flutter: ^2.1.8
+  google_maps_flutter: ^2.3.0
   # geofence
   # geofence_service: ">=3.4.4"
   # random id generator

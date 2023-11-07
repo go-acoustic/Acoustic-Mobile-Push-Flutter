@@ -2,7 +2,7 @@ group 'co.acoustic.flutter.sdk.flutter_acoustic_mobile_push'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.4.32'
+    ext.kotlin_version = '1.8.0'
     repositories {
         google()
         mavenCentral()
@@ -57,7 +57,7 @@ android {
 
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.annotation:annotation:1.2.0'
     implementation files('templib/AcousticPushSDK.jar')
     implementation 'com.google.android.gms:play-services-basement:17.6.0'
@@ -75,7 +75,6 @@ dependencies {
 //    acousticSDKDebugApi project(path: ':libs')
 //    acousticSDKReleaseApi project(path: ':libs')
 //    acousticSDKReleaseUnsignedApi project(path: ':libs')
-    implementation 'com.google.android.gms:play-services-location:18.0.0'
 
     implementation platform('com.google.firebase:firebase-bom:28.4.0')
     implementation 'com.google.firebase:firebase-messaging-ktx:22.0.0'

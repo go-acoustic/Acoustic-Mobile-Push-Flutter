@@ -13,7 +13,7 @@ class VideoMessagePageState extends State<VideoMessagePage> {
   void initState() {
     super.initState();
     _videoController =
-        VideoPlayerController.network(widget.videoMessagePageContent)
+        VideoPlayerController.networkUrl(Uri.parse(widget.videoMessagePageContent))
           ..initialize().then((_) {
             // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
             setState(() {});

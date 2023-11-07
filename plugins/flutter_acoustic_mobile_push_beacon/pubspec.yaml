@@ -14,7 +14,7 @@ dependencies:
     path: ../flutter_acoustic_mobile_push
   flutter_acoustic_mobile_push_location:
     path: ../flutter_acoustic_mobile_push_location
-  permission_handler: ^9.0.2
+  permission_handler: ^10.0.0
 
 dev_dependencies:
   flutter_test:

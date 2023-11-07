@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   event: ^2.0.5
-  intl: ^0.17.0
+  intl: ^0.18.0
   url_launcher: ^6.0.15
   webview_flutter_plus: ^0.3.0+2
 

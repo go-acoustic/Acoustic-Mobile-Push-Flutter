@@ -4,7 +4,6 @@ import 'package:event/event.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_acoustic_mobile_push_inbox/flutter_inbox_pay_load.dart';
 import 'package:flutter_acoustic_mobile_push_inbox/inbox/messages/inbox_messages.dart';
-import 'flutter_inbox_pay_load.dart';
 import 'dart:developer' as dev;
 
 class FlutterAcousticMobilePushInbox {

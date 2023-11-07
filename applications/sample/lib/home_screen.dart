@@ -82,10 +82,10 @@ class _HomeScreenState extends State<HomeScreen> {
             height: (MediaQuery.of(context).orientation == Orientation.portrait)
                 ? 250
                 : 100,
-            child: Center(
+            child: const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     'acoustic',
                     style: TextStyle(
