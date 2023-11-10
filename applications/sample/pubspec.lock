@@ -148,42 +148,42 @@ packages:
       path: "../../plugins/flutter_acoustic_mobile_push"
       relative: true
     source: path
-    version: "3.8.9-beta"
+    version: "3.8.10-beta"
   flutter_acoustic_mobile_push_beacon:
     dependency: "direct main"
     description:
       path: "../../plugins/flutter_acoustic_mobile_push_beacon"
       relative: true
     source: path
-    version: "3.8.9-beta"
+    version: "3.8.10-beta"
   flutter_acoustic_mobile_push_geofence:
     dependency: "direct main"
     description:
       path: "../../plugins/flutter_acoustic_mobile_push_geofence"
       relative: true
     source: path
-    version: "3.8.9-beta"
+    version: "3.8.10-beta"
   flutter_acoustic_mobile_push_inapp:
     dependency: "direct main"
     description:
       path: "../../plugins/flutter_acoustic_mobile_push_inapp"
       relative: true
     source: path
-    version: "3.8.9-beta"
+    version: "3.8.10-beta"
   flutter_acoustic_mobile_push_inbox:
     dependency: "direct main"
     description:
       path: "../../plugins/flutter_acoustic_mobile_push_inbox"
       relative: true
     source: path
-    version: "3.8.9-beta"
+    version: "3.8.10-beta"
   flutter_acoustic_mobile_push_location:
     dependency: "direct main"
     description:
       path: "../../plugins/flutter_acoustic_mobile_push_location"
       relative: true
     source: path
-    version: "3.8.9-beta"
+    version: "3.8.10-beta"
   flutter_cache_manager:
     dependency: transitive
     description:
@@ -211,7 +211,7 @@ packages:
       path: "../../plugins/flutter_ios_notification_service"
       relative: true
     source: path
-    version: "3.8.9-beta"
+    version: "3.8.10-beta"
   flutter_lints:
     dependency: "direct dev"
     description:
