@@ -76,7 +76,7 @@ packages:
       path: "../flutter_acoustic_mobile_push"
       relative: true
     source: path
-    version: "3.8.11-beta"
+    version: "3.8.12-beta"
   flutter_lints:
     dependency: "direct dev"
     description:
