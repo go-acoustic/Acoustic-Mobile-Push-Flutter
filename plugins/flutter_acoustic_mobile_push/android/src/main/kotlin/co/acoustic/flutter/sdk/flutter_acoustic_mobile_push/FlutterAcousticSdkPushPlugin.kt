@@ -57,6 +57,7 @@ import co.acoustic.mobile.push.sdk.registration.PhoneHomeManager
 import co.acoustic.mobile.push.sdk.api.message.MessageProcessorRegistry
 import co.acoustic.mobile.push.sdk.api.message.MessageProcessor
 import co.acoustic.mobile.push.sdk.notification.CertificationMessageProcessor
+import co.acoustic.mobile.push.sdk.notification.NotificationsPreferenceImpl
 import co.acoustic.mobile.push.sdk.apiinternal.MceSdkInternal
 import co.acoustic.mobile.push.sdk.api.attribute.StringAttribute
 import java.util.*
@@ -199,6 +200,11 @@ class FlutterAcousticSdkPushPlugin: ActivityAware, FlutterPlugin, MethodCallHand
       }
       "sendEvents" -> {
         AcousticEventModule.createEvent(mContext, call.arguments as Map<String, String>)
+      }
+      "setIcon" -> {
+        val notificationPref = NotificationsPreferenceImpl();
+        val image = mContext.resources.getIdentifier(call.arguments.toString(), "drawable", mContext.packageName);
+        notificationPref.setIcon(mContext, image);
       }
       "showCalendar" -> {
 

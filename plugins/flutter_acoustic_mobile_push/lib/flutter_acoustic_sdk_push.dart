@@ -66,6 +66,13 @@ class FlutterAcousticSdkPush {
     throw PlatformException(code: 'METHOD_ONLY_SUPPORTED_ON_IOS');
   }
 
+  /// Changes the small icon for the push notifications in Android
+  static Future<void> setIcon(String iconName) async {
+    if (Platform.isAndroid) {
+      await _channel.invokeMethod('setIcon', iconName);
+    }
+  }
+
   static void getRegisterValue() {}
 }
 
