@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import co.acoustic.flutter.sdk.flutter_acoustic_mobile_push.FlutterAcousticSdkPushPlugin
+import co.acoustic.flutter.sdk.flutter_acoustic_mobile_push.FlutterAcousticSdkPushPlugin;
 import co.acoustic.flutter.sdk.flutter_acoustic_mobile_push.convertJsonArray
 import co.acoustic.flutter.sdk.flutter_acoustic_mobile_push.convertJsonObject
 import co.acoustic.mobile.push.sdk.api.notification.MceNotificationAction
@@ -85,10 +85,10 @@ class AcousticCustomActionModule {
 
                         payloadMap["mce"] = mce
                         map["payload"] = payloadMap
-                        Log.e(TAG, "payload : $map")
+                        Log.d(TAG, "payload : $map")
                         data.postValue(map)
                         if (type != null) {
-                            FlutterAcousticSdkPushPlugin.sendEvent(type, map)
+                            FlutterAcousticSdkPushPlugin.sendEvent("customActionResponse", map);
                         }
                     }
 

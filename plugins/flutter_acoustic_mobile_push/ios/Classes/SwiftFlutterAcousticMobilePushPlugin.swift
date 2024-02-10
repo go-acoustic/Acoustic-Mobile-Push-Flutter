@@ -6,7 +6,7 @@ import AcousticMobilePush
 public class SwiftFlutterAcousticMobilePushPlugin: NSObject, FlutterPlugin, MCEActionProtocol {
     
     static var instance: SwiftFlutterAcousticMobilePushPlugin?
-    static var channel: FlutterMethodChannel?
+    static var _channel: FlutterMethodChannel?
     static var _registrar: FlutterPluginRegistrar?
     static var _headlessRunner: FlutterEngine?
     static var registeredAction: Set<String>? = nil
@@ -22,9 +22,23 @@ public class SwiftFlutterAcousticMobilePushPlugin: NSObject, FlutterPlugin, MCEA
         let instance = SwiftFlutterAcousticMobilePushPlugin()
         _headlessRunner = FlutterEngine(name: "FlutterAcousticSdk", project: nil, allowHeadlessExecution: true)
         registrar.addMethodCallDelegate(instance, channel: channel)
+        _channel = channel;
     }
     
-    @objc func receiveCustomAction(action: NSDictionary){}
+    @objc func receiveCustomAction(action: NSDictionary, withPayload payload: NSDictionary){
+        let payloadWithAction = [
+            "action": action,
+            "payload": payload
+        ];
+        
+        SwiftFlutterAcousticMobilePushPlugin.sendEvent(methodName: "customActionResponse", any: payloadWithAction);
+    }
+    
+    static public func sendEvent(methodName: String, any: Any?) {
+        if (_channel != nil && any != nil) {
+            _channel?.invokeMethod(methodName, arguments: any);
+        }
+    }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         
@@ -65,7 +79,7 @@ public class SwiftFlutterAcousticMobilePushPlugin: NSObject, FlutterPlugin, MCEA
                     SwiftFlutterAcousticMobilePushPlugin.registeredAction?.insert(call.arguments as! String)
                     MCEActionRegistry.shared.registerTarget(
                         self,
-                        with: #selector(receiveCustomAction(action: )),
+                        with: #selector(receiveCustomAction),
                         forAction: call.arguments as! String)
                 }
             }

@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.annotation.NonNull
-import co.acoustic.mobile.push.sdk.Preferences
 import co.acoustic.mobile.push.sdk.registration.RegistrationClientImpl
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -18,72 +17,25 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import co.acoustic.mobile.push.sdk.messaging.MessagingManager
 import co.acoustic.mobile.push.sdk.SdkPreferences
-import co.acoustic.mobile.push.sdk.SdkTags
-import co.acoustic.mobile.push.sdk.SdkTags.TAG_BEACON
-import co.acoustic.mobile.push.sdk.SdkTags.TAG_LOCATION
-import co.acoustic.mobile.push.sdk.SdkTags.TAG_SDK_LIFECYCLE_INIT
-import co.acoustic.mobile.push.sdk.SdkTags.TAG_SDK_LIFECYCLE
-import co.acoustic.mobile.push.sdk.api.MceSdkConfiguration.DatabaseConfiguration
-import co.acoustic.mobile.push.sdk.api.MceSdkConfiguration.LocationConfiguration.IBeaconConfiguration
-import co.acoustic.mobile.push.sdk.api.MceSdkConfiguration.LocationConfiguration.SyncConfiguration
-import co.acoustic.mobile.push.sdk.beacons.MceBluetoothScanner
-import co.acoustic.mobile.push.sdk.location.LocationPreferences
-import co.acoustic.mobile.push.sdk.wi.MceSdkWakeLock
-import co.acoustic.mobile.push.sdk.location.LocationManager
-import co.acoustic.mobile.push.sdk.location.LocationPreferences.LocationsState
 import co.acoustic.mobile.push.sdk.util.Logger
-import org.json.JSONException
-import org.json.JSONObject
-import android.content.SharedPreferences
-import android.content.SharedPreferences.Editor
 import android.os.Build
-import android.os.Bundle
-import co.acoustic.mobile.push.sdk.api.*
-import android.os.Environment
 import androidx.annotation.RequiresApi
 import androidx.annotation.UiThread
+import co.acoustic.flutter.sdk.flutter_acoustic_mobile_push.customAction.AcousticCustomActionModule
 import java.lang.Exception
-import co.acoustic.mobile.push.sdk.job.MceJobManager.restart
-import co.acoustic.mobile.push.sdk.db.DbAdapter
-import co.acoustic.mobile.push.sdk.encryption.EncryptionPreferences
-import co.acoustic.mobile.push.sdk.api.SdkState
 import co.acoustic.mobile.push.sdk.api.MceSdk
-import co.acoustic.mobile.push.sdk.api.attribute.Attribute
-import co.acoustic.mobile.push.sdk.plugin.Plugin
-import co.acoustic.mobile.push.sdk.plugin.PluginRegistry
-import co.acoustic.mobile.push.sdk.registration.PhoneHomeManager
-import co.acoustic.mobile.push.sdk.api.message.MessageProcessorRegistry
-import co.acoustic.mobile.push.sdk.api.message.MessageProcessor
-import co.acoustic.mobile.push.sdk.notification.CertificationMessageProcessor
 import co.acoustic.mobile.push.sdk.notification.NotificationsPreferenceImpl
-import co.acoustic.mobile.push.sdk.apiinternal.MceSdkInternal
-import co.acoustic.mobile.push.sdk.api.attribute.StringAttribute
 import java.util.*
-import co.acoustic.mobile.push.sdk.util.AssetsUtil
-import com.google.android.gms.security.ProviderInstaller
-import co.acoustic.mobile.push.sdk.job.MceJobManager.restart
-import co.acoustic.mobile.push.sdk.api.MceSdkConfiguration
-import co.acoustic.mobile.push.sdk.api.SdkInitLifecycleCallbacks
-import co.acoustic.mobile.push.sdk.api.MceApplication
-import co.acoustic.mobile.push.sdk.api.message.MessageSync
 import co.acoustic.mobile.push.sdk.job.MceJobManager
-import co.acoustic.mobile.push.sdk.location.MceGeofence
 import co.acoustic.mobile.push.sdk.notification.NotificationsUtility
 import co.acoustic.mobile.push.sdk.session.SessionManager
 import co.acoustic.mobile.push.sdk.session.SessionTrackingTask
 import co.acoustic.mobile.push.sdk.task.MceSdkTaskScheduler
-import co.acoustic.mobile.push.sdk.util.Iso8601
 import com.google.firebase.FirebaseApp
 import io.flutter.plugin.common.BinaryMessenger
-import org.json.JSONArray
-import kotlin.collections.ArrayList
 
-import co.acoustic.flutter.sdk.flutter_acoustic_mobile_push.customAction.AcousticCustomActionModule
 import co.acoustic.flutter.sdk.flutter_acoustic_mobile_push.event.AcousticEventModule
-
-import co.acoustic.mobile.push.sdk.location.LocationBroadcastReceiver
 
 /** FlutterAcousticSdkPushPlugin */
 class FlutterAcousticSdkPushPlugin: ActivityAware, FlutterPlugin, MethodCallHandler, io.flutter.plugin.common.PluginRegistry.ActivityResultListener {
@@ -116,7 +68,7 @@ class FlutterAcousticSdkPushPlugin: ActivityAware, FlutterPlugin, MethodCallHand
     fun sendEvent(methodName: String, any: Any?) {
       try {
         MethodChannel(binaryMessenger, "flutter_acoustic_mobile_push")
-          .invokeMethod(methodName,any)
+          .invokeMethod(methodName, any)
       } catch (ex: Exception) {
         Log.e("Exception sendEvent", "${ex.localizedMessage}")
       }

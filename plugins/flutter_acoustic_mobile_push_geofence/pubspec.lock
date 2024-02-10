@@ -76,14 +76,14 @@ packages:
       path: "../flutter_acoustic_mobile_push"
       relative: true
     source: path
-    version: "3.8.13-beta"
+    version: "3.8.14-beta"
   flutter_acoustic_mobile_push_location:
     dependency: "direct main"
     description:
       path: "../flutter_acoustic_mobile_push_location"
       relative: true
     source: path
-    version: "3.8.13-beta"
+    version: "3.8.14-beta"
   flutter_lints:
     dependency: "direct dev"
     description:

@@ -80,6 +80,27 @@ class CustomActionValue {
   final regisiteredEvent = Event<ValueEventArgs>();
   final unregisiteredEvent = Event<ValueEventArgs>();
   final regisiteredValueEvent = Event<ValueEventArgs>();
+  dynamic callbackForResponse;
+
+  CustomActionValue([dynamic callback]) {
+    FlutterAcousticSdkPush._channel.setMethodCallHandler(_handleMethod);
+    callbackForResponse = callback;
+  }
+
+
+  Future<dynamic> _handleMethod(MethodCall call) async {
+    switch (call.method) {
+      case "customActionResponse":
+        print('Custom Action Response: ' + call.arguments.toString());
+
+        if (callbackForResponse != null) {
+          callbackForResponse(call.arguments);
+        }
+        break;
+      default:
+        throw MissingPluginException('notImplemented');
+    }
+  }
 
   Future<void> registerCustomAction(String actionType) async {
     final String? response =
