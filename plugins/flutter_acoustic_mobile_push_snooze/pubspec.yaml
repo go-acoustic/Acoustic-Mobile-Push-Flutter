@@ -1,10 +1,10 @@
 name: flutter_acoustic_mobile_push_snooze
 description: A new flutter plugin project.
-version: 3.8.14-beta
+version: 3.8.17-beta
 homepage: https://pub.dev/packages/flutter_acoustic_mobile_push_snooze
 repository: https://github.com/Acoustic-Mobile-Push/Flutter
-build-name: 3.8.14-beta
-build-number: 3.8.14-beta
+build-name: 3.8.17-beta
+build-number: 3.8.17-beta
 environment:
   sdk: '>=2.12.0 <4.0.0'
   flutter: '>=1.20.0'
